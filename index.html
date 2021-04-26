@@ -382,13 +382,18 @@ Any attempt to misuse or repurpose this code in a way which leaves a lasting den
         var name = document.getElementById("form-name").value.toString();
         var writer = document.getElementById("form-writer").value.toString();
         var theory = document.getElementById("form-theory").value.toString();
-        document.getElementById("form-name").value = "lsName";
-        document.getElementById("form-writer").value = "lsWriter";
-        document.getElementById("form-theory").value = "lsTheory";
-        localStorage.setItem("theoryName", name);
-        localStorage.setItem("theoryWriter", writer);
-        localStorage.setItem("theoryContent", theory);
-        document.getElementById("form-userTheoryUploader").submit();
+        if (name=="") {
+          alert("Please enter a title for your theory.");
+          localStorage.setItem("theoryName", name);}
+        else if (writer=="") {
+          alert("Please enter your name.");
+          localStorage.setItem("theoryWriter", writer);}
+        else if (theory=="") {
+          alert("Please enter a theory.");
+          localStorage.setItem("theoryContent", theory);}
+        else {
+          document.getElementById("form-userTheoryUploader").submit();
+        }
       }
 
       function uploadTheory() {
